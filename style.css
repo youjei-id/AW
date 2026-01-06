@@ -1,0 +1,422 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  text-decoration: none;
+}
+:root {
+  --border: 3px solid #93272e;
+  --bg1: rgba(207, 207, 207, 0.527);
+  --bg2: black;
+  --btn: #83212b;
+  --btn2: rgb(161, 87, 94);
+  --shadow: 0 0 8px rgba(255, 136, 0, 0.64);
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bg-slider {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  animation: pan 10s linear infinite;
+  transition: opacity 1s ease;
+}
+
+@keyframes pan {
+  from {
+    background-position: right center;
+  }
+  to {
+    background-position: left center;
+  }
+}
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  /* background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 70%,
+    var(--btn) 100%
+  ); */
+  /* background: rgba(255, 255, 255, 0.1); */
+}
+
+/* font */
+h1 {
+  font-family: "Ephesis", cursive;
+  font-size: clamp(70px, 10vw, 150px);
+  letter-spacing: 10px;
+}
+h1 span {
+  font-size: clamp(50px, 10vw, 75px);
+}
+h2 {
+  font-family: "Ephesis", cursive;
+  font-size: clamp(10px, 10vw, 100px);
+}
+p {
+  font-size: clamp(13px, 2vw, 20px);
+}
+.arabic {
+  font-size: clamp(17px, 2vw, 29px);
+}
+/* COVER */
+.cover {
+  position: fixed;
+  inset: 0;
+  background-image: url(img/asepdanwindy.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 50px;
+  transition: transform 1.2s ease;
+  z-index: 10;
+}
+/* overlay gradient */
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 70%,
+    var(--btn) 100%
+  );
+  z-index: 1;
+}
+
+/* pastikan teks di atas overlay */
+.cover > * {
+  position: relative;
+  z-index: 2;
+}
+.cover h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px var(--btn);
+}
+
+.cover button {
+  margin: 10px;
+  padding: 12px 30px;
+  background: var(--btn);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+.cover small {
+  font-size: clamp(10px, 1vw, 50px);
+}
+
+body.open .cover {
+  transform: translateY(-100%);
+}
+
+body.open .content {
+  opacity: 1;
+}
+
+body.open {
+  overflow-y: auto;
+}
+
+/* MAIN CONTENT */
+.content {
+  padding: 50px 0 100px;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  text-align: center;
+  background: white;
+}
+
+/* hal ayat */
+.ayat {
+  text-align: center;
+  padding: 50px 20px 100px;
+  background: var(--btn);
+  color: white;
+  position: relative;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 50px 50px 0 0;
+  margin-top: -50px;
+}
+
+.calonmempelai {
+  background: linear-gradient(
+    to bottom,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 2%,
+    rgba(255, 255, 255, 0.1) 85%,
+    var(--btn2) 100%
+  );
+  color: var(--btn);
+  position: relative;
+  padding: 70px 0;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50px 50px 0 0;
+
+  margin-top: -50px;
+}
+
+.pria,
+.wanita {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.foto {
+  width: 200px;
+  background: var(--btn);
+  padding: 15px 15px 50px;
+  display: block;
+}
+.ig {
+  display: inline-block;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 13px;
+  margin-top: -40px;
+  background: white;
+  /* background: linear-gradient(150deg, red, orange, rgb(255, 234, 0)); */
+  color: var(--btn);
+  border-radius: 15px;
+  font-size: 13px;
+}
+
+.ig i {
+  margin-right: 5px;
+}
+.calonmempelai h2 {
+  margin: 20px;
+  font-size: clamp(10px, 8vw, 90px);
+}
+
+.calonmempelai p {
+  margin-bottom: 20px;
+  color: black;
+}
+
+hr {
+  width: 100%;
+  max-width: clamp(200px, 80%, 1000px);
+  height: 1px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+}
+
+/* countdown */
+#countdown {
+  display: flex;
+  justify-content: space-evenly;
+  background: var(--btn);
+  color: white;
+}
+.time-box {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* detail acara */
+.detail-acara {
+  max-width: 100%;
+  text-align: flex-start;
+  background: rgba(255, 0, 0, 0.2);
+  padding: 0 10px 40px;
+  overflow: hidden;
+}
+
+.detail-acara h2 {
+  padding: 40px;
+  text-align: center;
+  color: white;
+}
+.acara-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.acara-box {
+  /* background: #fff; */
+  background: linear-gradient(
+    to bottom,
+    var(--btn) 70px,
+    white 70px,
+    white 100px
+  );
+  padding: 25px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0 20px;
+}
+
+/* h3 ke kanan */
+.judul-kanan {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+
+/* isi */
+.info .label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #555;
+}
+
+.info .isi {
+  line-height: 1.5;
+}
+
+/* button maps */
+.btn-maps {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--btn);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn-maps:hover {
+  opacity: 0.8;
+}
+
+/* streaming */
+.streaming {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-stream {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.btn-stream.tiktok {
+  background: #000;
+}
+
+.btn-stream.youtube {
+  background: #ff0000;
+}
+
+/* love story kisah kami*/
+.lovestory {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 40px;
+}
+.lovestory h2 {
+  color: var(--btn);
+  padding-bottom: 40px;
+}
+.lovestory img {
+  width: 200px;
+  border-radius: 20px;
+}
+/* fotofoto */
+.moments {
+  padding: 40px;
+  width: 100%;
+  margin: auto;
+  background: white;
+}
+
+.moments h2 {
+  text-align: center;
+  color: var(--btn);
+  padding-bottom: 40px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* footer */
+.footer {
+  text-align: center;
+  color: white;
+  background: var(--btn);
+}
+
+.footer h2,
+.footer p {
+  padding: 20px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+footer {
+  background-color: var(--btn);
+  color: rgb(255, 255, 255);
+  padding-bottom: 10px;
+}
