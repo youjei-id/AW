@@ -19,7 +19,17 @@ body {
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
 }
+/* animasi scroll */
+/* body > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.7s ease;
 
+}
+body > *.active {
+  opacity: 1;
+  transform: translateY(0);
+} */
 .bg-slider {
   position: fixed;
   inset: 0;
@@ -352,14 +362,27 @@ hr {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
   padding: 40px;
 }
-.lovestory h2 {
+.lovestory h2,
+.lovestory h3 {
   color: var(--btn);
+  margin: 20px auto;
+}
+.storytext {
+  text-align: center;
+  /* background-color: transparent;
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 15px; */
+}
+.storytext h4 {
+  font-size: 15px;
+  margin-top: 15px;
 }
 .lovestory img {
-  width: 200px;
+  width: 220px;
   border-radius: 20px;
   margin: 20px auto;
 }
@@ -661,6 +684,9 @@ hr {
 .footer h2,
 .footer p {
   padding: 20px;
+}
+.footer h2 {
+  letter-spacing: 6px;
 }
 
 .footer p {

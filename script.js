@@ -54,9 +54,15 @@ function updateCountdown() {
 
   if (diff <= 0) return;
 
-  document.getElementById("days").innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
-  document.getElementById("hours").innerHTML = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  document.getElementById("minutes").innerHTML = Math.floor((diff / (1000 * 60)) % 60);
+  document.getElementById("days").innerHTML = Math.floor(
+    diff / (1000 * 60 * 60 * 24)
+  );
+  document.getElementById("hours").innerHTML = Math.floor(
+    (diff / (1000 * 60 * 60)) % 24
+  );
+  document.getElementById("minutes").innerHTML = Math.floor(
+    (diff / (1000 * 60)) % 60
+  );
   document.getElementById("seconds").innerHTML = Math.floor((diff / 1000) % 60);
 }
 
@@ -72,10 +78,13 @@ rsvpForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbxnSTNlCty7sZ2PPm92PYa8RVS0YLRfGfJ6NS8ZgQ3pV5Zb6TdY2oMTmrNxMMXcYxSl/exec", {
-      method: "POST",
-      body: new FormData(rsvpForm),
-    });
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbxnSTNlCty7sZ2PPm92PYa8RVS0YLRfGfJ6NS8ZgQ3pV5Zb6TdY2oMTmrNxMMXcYxSl/exec",
+      {
+        method: "POST",
+        body: new FormData(rsvpForm),
+      }
+    );
 
     alert("✅ Konfirmasi kehadiran berhasil dikirim");
     rsvpForm.reset();
@@ -87,7 +96,8 @@ rsvpForm.addEventListener("submit", async (e) => {
 // =======================
 // KOMENTAR
 // =======================
-const API_URL = "https://script.google.com/macros/s/AKfycbwNTjwaVZzSmOC0fGxYcCfR1O47tyz-_QMnKnZv-NSAjJUNVzml690WqMIJqdGvRDZE/exec";
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbwNTjwaVZzSmOC0fGxYcCfR1O47tyz-_QMnKnZv-NSAjJUNVzml690WqMIJqdGvRDZE/exec";
 
 const formKomentar = document.getElementById("formKomentar");
 const statusKomentar = document.getElementById("statusKomentar");
@@ -174,3 +184,23 @@ document.querySelectorAll(".btn-copy").forEach((btn) => {
     }
   });
 });
+
+// animasi saat scroll
+/*
+
+const items = document.querySelectorAll("body > *");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+items.forEach((item) => observer.observe(item));
+
+*/
