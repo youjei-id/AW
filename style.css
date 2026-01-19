@@ -173,8 +173,8 @@ body.open {
     rgb(255, 255, 255) 0%,
     rgb(255, 255, 255) 1%,
     rgba(255, 255, 255, 0.5) 50%,
-    rgb(255,255,255) 99%,
-    rgb(255,255,255) 100%
+    rgb(255, 255, 255) 99%,
+    rgb(255, 255, 255) 100%
   );
   color: var(--btn);
   position: relative;
@@ -588,10 +588,10 @@ hr {
 
 /*  */
 #commentsList {
-   max-width: 300px;
-  margin: 20px 20px 20px;
-  max-height: 500px;       
-  overflow-y: auto;         
+  max-width: 300px;
+  margin: 20px auto;
+  max-height: 500px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -623,7 +623,6 @@ hr {
   font-size: 13px;
   line-height: 1.4;
 }
-
 
 .comment-name {
   font-size: 14px;
